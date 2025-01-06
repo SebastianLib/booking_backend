@@ -33,6 +33,7 @@ public class ImageService {
         String uniqueFilename = UUID.randomUUID() + "_" + originalFilename;
 
         // Zapis pliku na dysk
+        // Zapis pliku na dysk
         Path filePath = uploadPath.resolve(uniqueFilename);
         Files.copy(file.getInputStream(), filePath);
 
