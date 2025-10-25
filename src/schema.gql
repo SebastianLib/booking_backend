@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  username: String!
+  email: String!
+  role: UserRole!
+  password: String!
+  phoneNumber: String
+  isVerified: Boolean!
+}
+
+enum UserRole {
+  OWNER
+  WORKER
+  CUSTOMER
+  ADMIN
+}
+
+type AuthPayload {
+  id: Int!
+  username: String!
+  role: UserRole!
+  accessToken: String!
+  isVerified: Boolean!
+  phoneNumber: String
+}
+
+type Query {
+  users: [User!]!
+  user(id: Int!): User!
+  currentUser: User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  signUp(input: CreateUserInput!): AuthPayload!
+  signIn(input: SignInInput!): AuthPayload!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String
+  email: String
+  password: String
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
